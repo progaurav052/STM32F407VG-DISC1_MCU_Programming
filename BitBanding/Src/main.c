@@ -27,6 +27,8 @@
 
 int main(void)
 {
+
+
     /* Loop forever */
 
 	// we have to chnage the 7th bit of the memory location 0x20000200 using its alias addres
