@@ -27,7 +27,13 @@ int main(void)
     /* Loop forever */
 
 	//generate an SVC Exception
+	uint32_t data;
+
 	__asm("SVC #8");
+	__asm("MOV %0,R0":"=r"(data)::);
+
+	printf("data is = %ld\n",data);
+
 	for(;;);
 }
 
@@ -61,8 +67,7 @@ void SVC_Handler_c(uint32_t* pBaseStackFrame){
 
 	printf("%d\n",*SVCAddr); // since it points to 1 byte prints 08
 
-
-	while(1);
+	pBaseStackFrame[0]=*SVCAddr+5;
 
 
 }
